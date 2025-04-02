@@ -1,0 +1,8 @@
+[core]
+    remote = myremote
+['remote "myremote"']
+    url = https://drive.google.com/drive/folders/1Wy3GFpX0h2H1OhsCn5k4X_1AQIL6YhTX
+['remote "gdrive_remote"']
+    url = gdrive://1Wy3GFpX0h2H1OhsCn5k4X_1AQIL6YhTX
+    gdrive_use_service_account = true
+    gdrive_service_account_json_file_path = C:\\Users\\lenovo\\Desktop\\MASTERS\\Data Science for production\\key.json
