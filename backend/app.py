@@ -49,6 +49,7 @@ def home():
 
 @app.route("/predict", methods=["POST"])
 def predict():
+    print("[Debug] Received request for prediction")
     try:
         data = request.get_json()
         new_data = pd.DataFrame([data])
@@ -61,15 +62,15 @@ def predict():
         proba = model.predict_proba(new_data)[0][1]
         
         result = "Yes" if pred == 1 else "No"
-        
+        print(f"[Debug] Prediction: {result}")
+
         return jsonify({"Attrition Prediction": result, "Probability": round(proba, 3)})
 
     except Exception as e:
         return jsonify({"error": str(e)})
 
 if __name__ == "__main__":
-    app.run(debug=True)
-
+    app.run(host= "0.0.0.0", port=5000, debug=True)
 
 
 

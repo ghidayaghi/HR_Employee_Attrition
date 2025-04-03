@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import './App.css'; // Optional if you want to extract styling later
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+
+
 const getDropdownOptions = (key) => {
   const options = {
     BusinessTravel: ["Travel_Rarely", "Travel_Frequently", "Non-Travel"],
@@ -52,7 +56,7 @@ function App() {
 
   const handleSubmit = async () => {
     try {
-      const res = await fetch('http://localhost:5000/predict', {
+      const res = await fetch(`${BACKEND_URL}/predict`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form)
