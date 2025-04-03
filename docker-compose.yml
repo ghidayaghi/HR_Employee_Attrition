@@ -6,6 +6,8 @@ services:
     ports:
       - "5000:5000"
     restart: always
+    networks:
+      - app-network
 
   frontend:
     build: ./frontend
@@ -14,3 +16,9 @@ services:
     restart: always
     depends_on:
       - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
