@@ -13,6 +13,23 @@ CORS(app)
 
 scaler = StandardScaler()
 
+trained_columns = [
+    "Age", "DailyRate", "DistanceFromHome", "Education", "EnvironmentSatisfaction",
+    "HourlyRate", "JobInvolvement", "JobLevel", "JobSatisfaction", "MonthlyIncome",
+    "MonthlyRate", "NumCompaniesWorked", "PercentSalaryHike", "PerformanceRating",
+    "RelationshipSatisfaction", "StockOptionLevel", "TotalWorkingYears",
+    "TrainingTimesLastYear", "WorkLifeBalance", "YearsAtCompany",
+    "YearsInCurrentRole", "YearsSinceLastPromotion", "YearsWithCurrManager",
+    "BusinessTravel_Travel_Frequently", "BusinessTravel_Travel_Rarely",
+    "Department_Research & Development", "Department_Sales",
+    "EducationField_Life Sciences", "EducationField_Marketing",
+    "EducationField_Medical", "EducationField_Other", "EducationField_Technical Degree",
+    "Gender_Male", "JobRole_Human Resources", "JobRole_Laboratory Technician",
+    "JobRole_Manager", "JobRole_Manufacturing Director", "JobRole_Research Director",
+    "JobRole_Research Scientist", "JobRole_Sales Executive", "JobRole_Sales Representative",
+    "MaritalStatus_Married", "MaritalStatus_Single", "OverTime_Yes"
+]
+
 # Columns that were scaled
 numeric_cols = [
     'Age', 'DailyRate', 'DistanceFromHome', 'Education',
@@ -25,10 +42,6 @@ numeric_cols = [
 model= mlflow.set_tracking_uri("https://dagshub.com/ghidayaghi/HR_Employee_Attrition.mlflow")  
 
 model = mlflow.sklearn.load_model("models:/Attrition_LogisticRegression/1")  
-
-# Load column names used during training
-with open("models/columns.txt", "r") as f:
-    trained_columns = [line.strip() for line in f]
 
 @app.route("/")
 def home():
